@@ -1,8 +1,8 @@
 const BASE_URL = 'http://localhost:3000';
 
-const wait = (delay: number) => new Promise((resolve) => {
-  setTimeout(resolve, delay);
-});
+// const wait = (delay: number) => new Promise((resolve) => {
+//   setTimeout(resolve, delay);
+// });
 
 type RequestMethod = 'GET' | 'POST' | 'PATCH' | 'DELETE';
 
@@ -20,7 +20,7 @@ const request = async <T>(
     };
   }
 
-  await wait(400);
+  // await wait(400);
   const response = await fetch(BASE_URL + url, options);
 
   if (!response.ok) {

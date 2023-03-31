@@ -1,42 +1,46 @@
 import { Box } from '@mui/material';
 import { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import { activate } from '../api/authentication';
 
 export const ActivationStatus: React.FC = () => {
   const [isActivated, setIsActivated] = useState(false);
   const { activationToken } = useParams();
 
-  const activateAccount = async () => {
-    try {
-      await activate(String(activationToken));
-      setIsActivated(true);
-    } catch (err) {
-      throw new Error("Couldn't find user");
-    }
-  };
-
   useEffect(() => {
+    const activateAccount = async () => {
+      try {
+        await activate(String(activationToken));
+        setIsActivated(true);
+      } catch (err) {
+        throw new Error("Couldn't find user with this token");
+      }
+    };
+
     activateAccount();
   }, []);
 
   return (
     <Box
       sx={{
-        bgcolor: isActivated ? '#00e676' : '#b71c1c',
+        display: 'flex',
+        flexDirection: 'column',
         borderRadius: '16px',
-        padding: '40px',
-        color: isActivated ? '#363434' : '#fff',
+        color: '#363434',
         fontWeight: 500,
-        fontSize: '32px',
+        fontSize: '48px',
         fontFamily: 'Inter, system-ui, Avenir, Helvetica, Arial, sans-serif',
-        textAlign: 'center',
+        marginTop: '10px',
+        padding: '10px',
       }}
     >
-      <p>
+      <Link to="/authentication" style={{ fontSize: 24 }}>
+        Back to login page
+      </Link>
+      <p style={{ margin: 0 }}>
         {isActivated
-          ? 'Account was succesfully activated!'
-          : 'Something went wrong...'}
+          ? 'Account was succesfully activated!😉'
+          : 'Something went wrong🤔'}
       </p>
     </Box>
   );

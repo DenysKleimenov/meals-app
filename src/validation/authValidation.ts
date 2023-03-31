@@ -1,7 +1,7 @@
-import { Form } from '../types/Form';
+import { AuthFormState } from '../types/AuthFormState';
 import { Error } from '../types/Error';
 
-export const isError = (field: keyof Form, error: Error) => {
+export const isError = (field: keyof AuthFormState, error: Error) => {
   switch (true) {
     case field === 'email' && error === Error.EMAIL:
     case field === 'repeatedPassword' && error === Error.PASSWORDS:
@@ -11,7 +11,10 @@ export const isError = (field: keyof Form, error: Error) => {
   }
 };
 
-export const renderErrorMessage = (field: string, error: Error): string => {
+export const renderErrorMessage = (
+  field: keyof AuthFormState,
+  error: Error,
+): string => {
   if (field === 'email' && error === Error.EMAIL) {
     return Error.EMAIL;
   }

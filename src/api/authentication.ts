@@ -2,11 +2,11 @@
 import { User } from '../types/User';
 import { client } from '../utils/fetchClient';
 
-export const signUp = ({ username, email, password }: User) => {
+export const signUp = (username: string, email: string, password: string) => {
   return client.post<User>('/auth/signup', { username, email, password });
 };
 
-export const signIn = ({ email, password }: User) => {
+export const signIn = (email: string, password: string) => {
   return client.post<User>('/auth/signin', { email, password });
 };
 
