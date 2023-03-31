@@ -5,7 +5,10 @@
 
   color-scheme: light dark;
   color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
+  background-color: #efe9f4;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
